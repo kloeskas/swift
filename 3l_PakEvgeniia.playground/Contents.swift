@@ -36,14 +36,16 @@ struct SomeCar {
             if (trunkState == .empty) && (trunkVolume > 0) && (trunkVolume != 0) && (newValue < trunkVolume) {
                 let space = trunkVolume - newValue
                 print ("\(brand)\(model) trunk free: \(space)")
-            } else { print("Input error or \(brand)\(model) trunk is full.")}
+            } else {
+        print("Input error or \(brand)\(model) trunk is full.")}
         }
     }
     var engineState : EngineState {
         willSet {
             if newValue == .start {
                 print ("\(brand)\(model) engine is on")
-            } else {print("\(brand)\(model) engine is off")}
+            } else {
+        print("\(brand)\(model) engine is off")}
         }
     }
     var windowState : WindowState {
@@ -93,7 +95,8 @@ struct SomeTruck {
         willSet {
             if newValue == .start {
                 print ("\(brand)\(model) engine is on")
-            } else {print("\(brand)\(model) engine is off")}
+            } else {
+        print("\(brand)\(model) engine is off")}
         }
     }
     var windowState : WindowState {
