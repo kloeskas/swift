@@ -1,18 +1,18 @@
 import Foundation
 
-enum engineState {
+enum EngineState {
     case start, stop
 }
 
-enum windowState {
+enum WindowState {
     case open, close
 }
 
-enum trunkState {
+enum TrunkState {
     case full, empty
 }
 
-struct someCar {
+struct SomeCar {
     let brand : String
     let model : String
     var color : String
@@ -39,28 +39,29 @@ struct someCar {
             } else { print("Input error or \(brand)\(model) trunk is full.")}
         }
     }
-    var engineState : engineState {
+    var engineState : EngineState {
         willSet {
             if newValue == .start {
                 print ("\(brand)\(model) engine is on")
             } else {print("\(brand)\(model) engine is off")}
         }
     }
-    var windowState : windowState {
+    var windowState : WindowState {
         willSet {
             if newValue == .open {
                 print("\(brand)\(model) windows are open")
-            } else { print("\(brand)\(model) windows are close") }
+            } else {
+        print("\(brand)\(model) windows are close") }
         }
     }
-    var trunkState : trunkState
-    mutating func emptyTrunck() {
+    var trunkState : TrunkState
+    mutating func EmptyTrunck() {
         self.trunkState = .empty
         print ("\(brand)\(model) trunck is empty")
     }
 }
 
-struct someTruck {
+struct SomeTruck {
     let brand : String
     let model : String
     var color : String
@@ -84,42 +85,44 @@ struct someTruck {
             if (trunkState == .empty) && (bodyVolume > 0) && (bodyVolume != 0) && (newValue < bodyVolume) {
                 let space = bodyVolume - newValue
                 print ("\(brand)\(model) trunk free: \(space)")
-            } else { print("Input error or \(brand)\(model) trunk is full.")}
+            } else {
+        print("Input error or \(brand)\(model) trunk is full.")}
         }
     }
-    var engineState : engineState {
+    var engineState : EngineState {
         willSet {
             if newValue == .start {
                 print ("\(brand)\(model) engine is on")
             } else {print("\(brand)\(model) engine is off")}
         }
     }
-    var windowState : windowState {
+    var windowState : WindowState {
         willSet {
             if newValue == .open {
                 print("\(brand)\(model) windows are open")
-            } else { print("\(brand)\(model) windows are close") }
+            } else {
+        print("\(brand)\(model) windows are close") }
         }
     }
-    var trunkState : trunkState
+    var trunkState : TrunkState
     mutating func emptyTrunck() {
         self.trunkState = .empty
         print ("\(brand)\(model) trunck is empty")
     }
 }
 
-var car1 = someCar(brand: "Porsche", model: "Cayenne", color: "clear", release: 2019, trunkVolume: 590.0 , engineState: .stop, windowState: .open, trunkState: .empty)
-var car2 = someCar(brand: "Lamborghini", model: "Urus", color: "clear", release: 2018, trunkVolume: 900.0, engineState: .stop, windowState: .close, trunkState: .full)
+var car1 = SomeCar(brand: "Porsche", model: "Cayenne", color: "clear", release: 2019, trunkVolume: 590.0 , engineState: .stop, windowState: .open, trunkState: .empty)
+var car2 = SomeCar(brand: "Lamborghini", model: "Urus", color: "clear", release: 2018, trunkVolume: 900.0, engineState: .stop, windowState: .close, trunkState: .full)
 
-var truck1 = someTruck(brand: "Mercedes-Benz", model: "Actros", color: "clear", release: 2014, bodyVolume: 100000.0, engineState: .start, windowState: .open, trunkState: .full)
-var truck2 = someTruck(brand: "Volvo", model: "FH-13", color: "clear", release: 2014, bodyVolume: 150000.0, engineState: .start, windowState: .close, trunkState: .empty)
+var truck1 = SomeTruck(brand: "Mercedes-Benz", model: "Actros", color: "clear", release: 2014, bodyVolume: 100000.0, engineState: .start, windowState: .open, trunkState: .full)
+var truck2 = SomeTruck(brand: "Volvo", model: "FH-13", color: "clear", release: 2014, bodyVolume: 150000.0, engineState: .start, windowState: .close, trunkState: .empty)
 
 
 car1.engineState = .start
 car1.trunkVolume = 540.0
 car1.changeColor(c: "red")
 car2.trunkVolume = 890.0
-car2.emptyTrunck()
+car2.EmptyTrunck()
 car2.trunkVolume = 80.9
 car2.windowState = .open
 car2.changeColor(c: "black")
@@ -131,3 +134,4 @@ truck2.bodyVolume = 5578908
 
 
 print ("Information about the first car: brandmodel: \(car1.brand)\(car1.model), release: \(car1.release), color: \(String(describing: car1.color)), free trunkVolume: \(car1.trunkVolume), engine is \(car1.engineState)")
+
